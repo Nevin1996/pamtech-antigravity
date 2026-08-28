@@ -1,16 +1,17 @@
 "use client";
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
-import { Eye, EyeOff, Lock, Mail, Loader2 } from "lucide-react";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
+import { Eye, EyeOff, Lock, Mail, Loader2, ArrowRight, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect") || "/crm";
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@pamtechgroup.com");
+  const [password, setPassword] = useState("pamtech2026");
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -20,6 +21,15 @@ function LoginForm() {
     setLoading(true);
     setError("");
 
+    if (!isSupabaseConfigured) {
+      // Local / Standalone mode — allow direct access
+      setTimeout(() => {
+        router.push(redirect);
+        router.refresh();
+      }, 500);
+      return;
+    }
+
     const supabase = createClient();
     const { error: authError } = await supabase.auth.signInWithPassword({
       email,
@@ -27,7 +37,7 @@ function LoginForm() {
     });
 
     if (authError) {
-      setError("Invalid email or password. Please try again.");
+      setError("Invalid email or password. Please check your Supabase credentials.");
       setLoading(false);
     } else {
       router.push(redirect);
@@ -39,7 +49,7 @@ function LoginForm() {
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#C8A96E] to-[#a8893e] mb-4 shadow-lg shadow-[#C8A96E]/25">
             <Lock className="w-6 h-6 text-white" />
           </div>
@@ -48,7 +58,19 @@ function LoginForm() {
         </div>
 
         {/* Card */}
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm shadow-2xl">
+          {!isSupabaseConfigured && (
+            <div className="mb-6 p-4 rounded-xl bg-[#C8A96E]/10 border border-[#C8A96E]/30 text-left space-y-2">
+              <div className="flex items-center gap-2 text-[#C8A96E] font-semibold text-xs uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Local Storage Mode Active</span>
+              </div>
+              <p className="text-xs text-white/60 leading-relaxed">
+                Supabase cloud database is optional. You can enter the CRM immediately with the prefilled credentials below or click the direct access button.
+              </p>
+            </div>
+          )}
+
           <form onSubmit={handleLogin} className="space-y-5">
             {/* Email */}
             <div>
@@ -102,7 +124,7 @@ function LoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-[#C8A96E] to-[#a8893e] text-white font-semibold py-3 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2 text-sm"
+              className="w-full bg-gradient-to-r from-[#C8A96E] to-[#a8893e] text-white font-semibold py-3 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2 text-sm shadow-lg shadow-[#C8A96E]/20"
             >
               {loading ? (
                 <>
@@ -114,6 +136,18 @@ function LoginForm() {
               )}
             </button>
           </form>
+
+          {!isSupabaseConfigured && (
+            <div className="mt-4 pt-4 border-t border-white/10">
+              <Link
+                href="/crm"
+                className="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-white/80 hover:text-white transition-all flex items-center justify-center gap-2"
+              >
+                <span>Direct Access to Dashboard</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#C8A96E]" />
+              </Link>
+            </div>
+          )}
         </div>
 
         <p className="text-center text-xs text-white/20 mt-6">
@@ -126,11 +160,13 @@ function LoginForm() {
 
 export default function CRMLoginPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
-        <Loader2 className="w-6 h-6 text-[#C8A96E] animate-spin" />
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+          <Loader2 className="w-6 h-6 text-[#C8A96E] animate-spin" />
+        </div>
+      }
+    >
       <LoginForm />
     </Suspense>
   );
