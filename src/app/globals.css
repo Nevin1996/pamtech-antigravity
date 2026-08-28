@@ -1,0 +1,90 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --font-plus-jakarta: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-plus-jakarta);
+  background-color: #101828;
+  color: #1F2937;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #101828;
+}
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E7000B;
+}
+
+/* Glassmorphism Classes */
+.glass-dark {
+  background: rgba(16, 24, 40, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Tricolor Text Gradient */
+.text-gradient-pamtech {
+  background: linear-gradient(90deg, #FF6467 0%, #FFA2A2 45%, #51A2FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-red {
+  background: linear-gradient(90deg, #E7000B 0%, #FF6900 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(90deg, #134CA2 0%, #155DFC 50%, #51A2FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero Deep Linear Gradients */
+.hero-gradient {
+  background: linear-gradient(135deg, #101828 0%, #460809 45%, #162456 100%);
+}
+
+.hero-overlay {
+  background: radial-gradient(circle at 50% 30%, rgba(231, 0, 11, 0.15) 0%, rgba(16, 24, 40, 0.95) 75%);
+}
+
+/* Scrollytelling Pinned Stage Container */
+.scrolly-stage {
+  position: relative;
+  min-height: 100vh;
+}
