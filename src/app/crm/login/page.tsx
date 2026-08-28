@@ -1,12 +1,11 @@
 "use client";
-import { Suspense, useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
-import { Eye, EyeOff, Lock, Mail, Loader2, ArrowRight, ShieldCheck } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, Loader2, ArrowRight, ShieldCheck, UserPlus, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect") || "/crm";
 
@@ -15,34 +14,62 @@ function LoginForm() {
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError("");
+    setSuccessMsg("");
 
     if (!isSupabaseConfigured) {
-      // Local / Standalone mode — allow direct access
-      setTimeout(() => {
-        router.push(redirect);
-        router.refresh();
-      }, 500);
+      // Local / Standalone mode — navigate straight into CRM
+      window.location.href = redirect;
       return;
     }
 
-    const supabase = createClient();
-    const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const supabase = createClient();
+      
+      // 1. Attempt standard password sign in
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (authError) {
-      setError("Invalid email or password. Please check your Supabase credentials.");
+      if (!signInError && signInData?.session) {
+        window.location.href = redirect;
+        return;
+      }
+
+      // 2. If user doesn't exist yet in Supabase, auto-create the admin user on the fly
+      const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+
+      if (!signUpError && signUpData?.session) {
+        setSuccessMsg("Account created and authenticated! Entering CRM...");
+        setTimeout(() => {
+          window.location.href = redirect;
+        }, 1000);
+        return;
+      }
+
+      if (signUpError?.message?.includes("User already registered") || signInError) {
+        setError(signInError?.message || "Invalid credentials. Please check your email and password.");
+      } else {
+        setError(signUpError?.message || "Unable to authenticate with Supabase. Please check credentials.");
+      }
+    } catch (err: any) {
+      setError(err?.message || "Authentication error occurred.");
+    } finally {
       setLoading(false);
-    } else {
-      router.push(redirect);
-      router.refresh();
     }
+  }
+
+  function handleDirectAccess() {
+    window.location.href = redirect;
   }
 
   return (
@@ -59,14 +86,29 @@ function LoginForm() {
 
         {/* Card */}
         <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm shadow-2xl">
-          {!isSupabaseConfigured && (
+          {!isSupabaseConfigured ? (
             <div className="mb-6 p-4 rounded-xl bg-[#C8A96E]/10 border border-[#C8A96E]/30 text-left space-y-2">
               <div className="flex items-center gap-2 text-[#C8A96E] font-semibold text-xs uppercase tracking-wider">
                 <ShieldCheck className="w-4 h-4" />
-                <span>Local Storage Mode Active</span>
+                <span>Local Storage Active</span>
               </div>
               <p className="text-xs text-white/60 leading-relaxed">
-                Supabase cloud database is optional. You can enter the CRM immediately with the prefilled credentials below or click the direct access button.
+                Click below to enter the CRM dashboard immediately.
+              </p>
+              <button
+                type="button"
+                onClick={handleDirectAccess}
+                className="w-full mt-2 py-2.5 px-4 rounded-xl bg-[#C8A96E] hover:bg-[#b59556] text-black font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg"
+              >
+                <span>Enter CRM Dashboard Now</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          ) : (
+            <div className="mb-6 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-left">
+              <p className="text-[11px] text-emerald-400 font-medium flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Supabase Cloud Database Connected
               </p>
             </div>
           )}
@@ -115,8 +157,16 @@ function LoginForm() {
 
             {/* Error */}
             {error && (
-              <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-3 text-sm text-red-400">
+              <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-3 text-xs text-red-400 leading-relaxed">
                 {error}
+              </div>
+            )}
+
+            {/* Success */}
+            {successMsg && (
+              <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 text-xs text-emerald-400 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                <span>{successMsg}</span>
               </div>
             )}
 
@@ -129,25 +179,22 @@ function LoginForm() {
               {loading ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  Signing in…
+                  Authenticating…
                 </>
               ) : (
-                "Sign In to CRM"
+                "Sign In / Register to CRM"
               )}
             </button>
           </form>
 
-          {!isSupabaseConfigured && (
-            <div className="mt-4 pt-4 border-t border-white/10">
-              <Link
-                href="/crm"
-                className="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-white/80 hover:text-white transition-all flex items-center justify-center gap-2"
-              >
-                <span>Direct Access to Dashboard</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#C8A96E]" />
-              </Link>
-            </div>
-          )}
+          <div className="mt-6 pt-4 border-t border-white/10 text-center">
+            <Link
+              href="/"
+              className="text-xs text-white/40 hover:text-white transition-colors"
+            >
+              ← Back to Pamtech Group Website
+            </Link>
+          </div>
         </div>
 
         <p className="text-center text-xs text-white/20 mt-6">
