@@ -81,16 +81,16 @@ body {
 
 /* Responsive Brand Background Utilities */
 .bg-pamtech-desktop {
-  background-image: url('/assets/backgrounds/bg-desktop.svg');
+  background-image: url('/assets/backgrounds/bg-desktop.jpg');
   background-size: cover;
-  background-position: top center;
+  background-position: center top;
   background-repeat: no-repeat;
 }
 
 .bg-pamtech-mobile {
-  background-image: url('/assets/backgrounds/bg-mobile.svg');
+  background-image: url('/assets/backgrounds/bg-mobile.jpg');
   background-size: cover;
-  background-position: top center;
+  background-position: center top;
   background-repeat: no-repeat;
 }
 

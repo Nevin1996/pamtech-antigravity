@@ -55,8 +55,8 @@ export default function VideoBackground({
         ) : (
           /* High-Impact Ambient Motion & Responsive SVG Pattern */
           <div className="w-full h-full relative">
-            <div className="block md:hidden absolute inset-0 w-full h-full bg-pamtech-mobile opacity-45 scale-105" />
-            <div className="hidden md:block absolute inset-0 w-full h-full bg-pamtech-desktop opacity-40 scale-105" />
+            <div className="block md:hidden absolute inset-0 w-full h-full bg-pamtech-mobile opacity-80 scale-105" />
+            <div className="hidden md:block absolute inset-0 w-full h-full bg-pamtech-desktop opacity-70 scale-105" />
             {posterSrc && (
               <div
                 className="w-full h-full bg-cover bg-center opacity-70 mix-blend-overlay"

@@ -40,9 +40,9 @@ export default function BusinessLinesIndexPage() {
       <section className="relative py-16 sm:py-24 overflow-hidden">
         {/* Background Visuals */}
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
-          <div className="block md:hidden absolute inset-0 w-full h-full bg-pamtech-mobile opacity-40 scale-105" />
-          <div className="hidden md:block absolute inset-0 w-full h-full bg-pamtech-desktop opacity-30 scale-105" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#101828]/70 via-[#101828]/80 to-[#101828]" />
+          <div className="block md:hidden absolute inset-0 w-full h-full bg-pamtech-mobile opacity-75 scale-105" />
+          <div className="hidden md:block absolute inset-0 w-full h-full bg-pamtech-desktop opacity-65 scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#101828]/50 via-[#101828]/60 to-[#101828]" />
         </div>
         <div className="mx-auto w-11/12 max-w-7xl relative z-10 text-center space-y-6">
           <motion.div

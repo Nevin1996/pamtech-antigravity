@@ -51,11 +51,11 @@ export default function RootLayout({
         {/* Responsive Brand Background Layer */}
         <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
           {/* Mobile Background */}
-          <div className="block md:hidden absolute inset-0 w-full h-full bg-pamtech-mobile opacity-30" />
+          <div className="block md:hidden absolute inset-0 w-full h-full bg-pamtech-mobile opacity-60" />
           {/* Desktop Background */}
-          <div className="hidden md:block absolute inset-0 w-full h-full bg-pamtech-desktop opacity-25" />
+          <div className="hidden md:block absolute inset-0 w-full h-full bg-pamtech-desktop opacity-50" />
           {/* Ambient Vignette & Gradient Mesh */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#101828]/50 via-transparent to-[#101828]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#101828]/40 via-transparent to-[#101828]/80" />
         </div>
         <SmoothScroll>
           <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
