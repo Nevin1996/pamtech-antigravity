@@ -146,19 +146,40 @@ export default function BusinessLinesIndexPage() {
                     </div>
                   </div>
 
-                  {/* Right Key Stats HUD */}
-                  <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-                    {biz.highlightStats.map((st, stIdx) => (
-                      <div
-                        key={stIdx}
-                        className="glass-card rounded-2xl p-5 text-gray-900 border border-white/50 shadow-xl"
-                      >
-                        <p className="text-3xl font-extrabold text-[#E7000B]">{st.value}</p>
-                        <p className="text-xs font-bold text-gray-700 mt-1 uppercase tracking-wider">
-                          {st.label}
-                        </p>
+                  {/* Right Key Stats HUD & Real Photo */}
+                  <div className="lg:col-span-5 space-y-4">
+                    <div className="relative h-48 w-full rounded-2xl overflow-hidden bg-black/40 border border-white/15 shadow-xl">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={biz.heroImage}
+                        alt={biz.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#101828]/80 via-transparent to-transparent" />
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white/90">
+                        <span className="font-bold flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-[#FF6467]" />
+                          Official Subsidiary Asset
+                        </span>
+                        <span className="text-[10px] font-mono uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">
+                          Est. {biz.foundedYear}
+                        </span>
                       </div>
-                    ))}
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      {biz.highlightStats.slice(0, 2).map((st, stIdx) => (
+                        <div
+                          key={stIdx}
+                          className="glass-card rounded-2xl p-4 text-gray-900 border border-white/50 shadow-xl"
+                        >
+                          <p className="text-2xl font-extrabold text-[#E7000B]">{st.value}</p>
+                          <p className="text-[11px] font-bold text-gray-700 mt-0.5 uppercase tracking-wider">
+                            {st.label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </motion.div>

@@ -39,7 +39,7 @@ export const BUSINESS_LINES: BusinessLine[] = [
     ],
     color: "#E7000B",
     accentGradient: "from-[#FB2C36] via-[#E7000B] to-[#FF6900]",
-    heroImage: "/images/oil_and_gas_hero.jpg",
+    heroImage: "/assets/pictures/oil_and_gas.png",
     services: [
       {
         title: "Bulk Fuel Distribution",
@@ -102,7 +102,7 @@ export const BUSINESS_LINES: BusinessLine[] = [
     ],
     color: "#134CA2",
     accentGradient: "from-[#134CA2] via-[#155DFC] to-[#51A2FF]",
-    heroImage: "/images/autoland_hero.jpg",
+    heroImage: "/assets/pictures/auto_land.png",
     services: [
       {
         title: "Computerized Diagnostics",
@@ -165,7 +165,7 @@ export const BUSINESS_LINES: BusinessLine[] = [
     ],
     color: "#E7000B",
     accentGradient: "from-[#E7000B] via-[#FF6467] to-[#FFA2A2]",
-    heroImage: "/images/autoparts_hero.jpg",
+    heroImage: "/assets/pictures/auto_parts.png",
     services: [
       {
         title: "Engine & Mechanical Components",
@@ -228,7 +228,7 @@ export const BUSINESS_LINES: BusinessLine[] = [
     ],
     color: "#FF6900",
     accentGradient: "from-[#FF6900] via-[#FB2C36] to-[#101828]",
-    heroImage: "/images/luxury_ride_hero.jpg",
+    heroImage: "/assets/pictures/luxury_ride.png",
     services: [
       {
         title: "Executive Chauffeur Services",
@@ -291,7 +291,7 @@ export const BUSINESS_LINES: BusinessLine[] = [
     ],
     color: "#155DFC",
     accentGradient: "from-[#155DFC] via-[#51A2FF] to-[#E7000B]",
-    heroImage: "/images/media_hero.jpg",
+    heroImage: "/assets/pictures/pamtech_media.jpg",
     services: [
       {
         title: "Corporate Documentaries & Video Production",
@@ -354,7 +354,7 @@ export const BUSINESS_LINES: BusinessLine[] = [
     ],
     color: "#51A2FF",
     accentGradient: "from-[#51A2FF] via-[#134CA2] to-[#101828]",
-    heroImage: "/images/technology_hero.jpg",
+    heroImage: "/assets/pictures/pamtech_tech.jpg",
     services: [
       {
         title: "Carcare App",
@@ -417,7 +417,7 @@ export const BUSINESS_LINES: BusinessLine[] = [
     ],
     color: "#FB2C36",
     accentGradient: "from-[#FB2C36] via-[#FF6900] to-[#E7000B]",
-    heroImage: "/images/real_estate_hero.jpg",
+    heroImage: "/assets/pictures/real_estate.png",
     services: [
       {
         title: "08 City Garden Estate",
@@ -480,7 +480,7 @@ export const BUSINESS_LINES: BusinessLine[] = [
     ],
     color: "#E7000B",
     accentGradient: "from-[#E7000B] via-[#FB2C36] to-[#155DFC]",
-    heroImage: "/images/foundation_hero.jpg",
+    heroImage: "/assets/pictures/foundation.png",
     services: [
       {
         title: "DAD4Adolescents Mentorship",

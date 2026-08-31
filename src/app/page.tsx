@@ -176,17 +176,25 @@ export default function HomePage() {
             <Link
               key={biz.id}
               href={`/business-lines/${biz.slug}`}
-              className="group glass-dark rounded-3xl p-6 border border-white/10 hover:border-[#FF6467]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-1 relative overflow-hidden"
+              className="group glass-dark rounded-3xl p-5 border border-white/10 hover:border-[#FF6467]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-1 relative overflow-hidden"
             >
               {/* Corner Ambient Glow */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full pointer-events-none group-hover:bg-[#FF6467]/10 transition-colors" />
 
               <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-2xl bg-white/10 border border-white/10 group-hover:scale-110 transition-transform">
+                {/* Real Subsidiary Photo Preview */}
+                <div className="relative h-44 w-full rounded-2xl overflow-hidden bg-black/40 border border-white/10">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={biz.heroImage}
+                    alt={biz.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101828] via-black/20 to-transparent" />
+                  <div className="absolute top-3 left-3 p-2 rounded-xl bg-black/60 backdrop-blur-md border border-white/15">
                     {iconMap[biz.id]}
                   </div>
-                  <span className="text-[11px] font-semibold text-gray-400 tracking-wider uppercase">
+                  <span className="absolute top-3 right-3 text-[10px] font-bold px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-gray-300 uppercase tracking-wider">
                     Est. {biz.foundedYear}
                   </span>
                 </div>
@@ -195,7 +203,7 @@ export default function HomePage() {
                   <span className="text-xs font-semibold text-[#FF6467] block tracking-wide uppercase">
                     {biz.category}
                   </span>
-                  <h3 className="text-xl font-bold text-white group-hover:text-[#51A2FF] transition-colors mt-0.5">
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#51A2FF] transition-colors mt-0.5">
                     {biz.name}
                   </h3>
                 </div>
@@ -205,7 +213,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-gray-300 group-hover:text-white">
+              <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-gray-300 group-hover:text-white">
                 <span>Explore Subsidiary</span>
                 <ChevronRight className="w-4 h-4 text-[#FF6467] transform group-hover:translate-x-1 transition-transform" />
               </div>

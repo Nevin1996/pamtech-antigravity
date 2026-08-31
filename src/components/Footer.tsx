@@ -13,15 +13,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/10">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#E7000B] to-[#155DFC] p-[2px] shadow-lg shadow-red-500/20">
-                <div className="h-full w-full bg-[#101828] rounded-[10px] flex items-center justify-center font-bold text-white text-lg">
-                  P
-                </div>
-              </div>
-              <span className="font-extrabold text-2xl tracking-tight text-white">
-                PAMTECH <span className="text-[#FF6467] font-semibold text-xs uppercase px-1.5 py-0.5 rounded bg-white/10 border border-white/10">GROUP</span>
-              </span>
+            <Link href="/" className="inline-block">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/logos/logo.svg"
+                alt="Pamtech Group Logo"
+                className="h-10 w-auto object-contain brightness-110"
+              />
             </Link>
 
             <p className="text-sm text-gray-400 max-w-md leading-relaxed">

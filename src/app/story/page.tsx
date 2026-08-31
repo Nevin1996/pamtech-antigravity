@@ -40,7 +40,7 @@ export default function OurStoryPage() {
     <div className="space-y-24">
       {/* 1. CINEMATIC VIDEO BACKGROUND HERO */}
       <VideoBackground
-        posterSrc="https://images.unsplash.com/photo-1579389083046-e3df9c2b3325?q=80&w=1920&auto=format&fit=crop"
+        posterSrc="/assets/pictures/oil_and_gas.png"
         overlayOpacity="bg-[#101828]/85"
       >
         <div className="text-center space-y-6 max-w-4xl mx-auto">
@@ -227,12 +227,41 @@ export default function OurStoryPage() {
                   </motion.div>
 
                   {/* Center Node Indicator */}
-                  <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-[#101828] border-2 border-white/40 shadow-xl relative z-10">
+                  <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-[#101828] border-2 border-white/40 shadow-xl relative z-10 shrink-0">
                     <span className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
                   </div>
 
-                  {/* Empty Spacer Column for Alignment */}
-                  <div className="hidden md:block w-[calc(50%-2.5rem)]" />
+                  {/* Opposite Photographic Preview Card */}
+                  <motion.div
+                    initial={{ opacity: 0, x: isEven ? 40 : -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    className="hidden md:block w-[calc(50%-2.5rem)]"
+                  >
+                    <div className="glass-dark rounded-3xl p-2 border border-white/15 overflow-hidden shadow-2xl group">
+                      <div className="relative h-64 w-full rounded-2xl overflow-hidden bg-black/40">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#101828]/80 via-transparent to-transparent" />
+                        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white/90">
+                          <span className="font-bold text-white tracking-wide">
+                            {item.title}
+                          </span>
+                          <span
+                            className="px-3 py-1 rounded-full text-[10px] font-bold text-white shadow"
+                            style={{ backgroundColor: item.color }}
+                          >
+                            {item.year}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
               );
             })}

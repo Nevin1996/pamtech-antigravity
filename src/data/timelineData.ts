@@ -8,6 +8,7 @@ export interface TimelineMilestone {
   summary: string;
   highlights: string[];
   businessSlug?: string;
+  image: string;
 }
 
 export const TIMELINE_MILESTONES: TimelineMilestone[] = [
@@ -26,6 +27,7 @@ export const TIMELINE_MILESTONES: TimelineMilestone[] = [
       "Grew to become the biggest oil and gas marketer in Imo State",
     ],
     businessSlug: "oil-and-gas",
+    image: "/assets/pictures/oil_and_gas.png",
   },
   {
     year: 2021,
@@ -43,6 +45,7 @@ export const TIMELINE_MILESTONES: TimelineMilestone[] = [
       "Over 150+ specialized automotive personnel employed",
     ],
     businessSlug: "autoland",
+    image: "/assets/pictures/auto_land.png",
   },
   {
     year: 2022,
@@ -60,6 +63,7 @@ export const TIMELINE_MILESTONES: TimelineMilestone[] = [
       "Trained tactical protocol and security-trained chauffeurs",
     ],
     businessSlug: "luxury-ride",
+    image: "/assets/pictures/luxury_ride.png",
   },
   {
     year: 2023,
@@ -77,6 +81,7 @@ export const TIMELINE_MILESTONES: TimelineMilestone[] = [
       "High-end corporate documentary and broadcast studio capabilities",
     ],
     businessSlug: "media",
+    image: "/assets/pictures/pamtech_media.jpg",
   },
   {
     year: 2025,
@@ -94,6 +99,7 @@ export const TIMELINE_MILESTONES: TimelineMilestone[] = [
       "Learn with Pamtech: Technical skill acquisition & certification portal",
     ],
     businessSlug: "technology",
+    image: "/assets/pictures/pamtech_tech.jpg",
   },
   {
     year: 2026,
@@ -111,6 +117,7 @@ export const TIMELINE_MILESTONES: TimelineMilestone[] = [
       "100% verified Certificate of Occupancy (C of O) guarantees",
     ],
     businessSlug: "real-estate",
+    image: "/assets/pictures/real_estate.png",
   },
   {
     year: "Ongoing",
@@ -128,5 +135,6 @@ export const TIMELINE_MILESTONES: TimelineMilestone[] = [
       "Sustainable community development in rural and peri-urban hubs",
     ],
     businessSlug: "foundation",
+    image: "/assets/pictures/foundation-gallery.png",
   },
 ];

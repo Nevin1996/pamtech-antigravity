@@ -61,7 +61,7 @@ export const IMPACT_GALLERY: ImpactGalleryItem[] = [
     category: "Foundation",
     description: "Annual youth empowerment conference mentoring over 1,500 adolescents on digital skills, character development, and academic excellence.",
     year: "2025",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/pictures/foundation-gallery.png",
   },
   {
     id: "autoland-garage-tour",
@@ -69,7 +69,7 @@ export const IMPACT_GALLERY: ImpactGalleryItem[] = [
     category: "Energy & Automotive",
     description: "State-of-the-art computerized diagnostic floor servicing over 150 fleet vehicles weekly with zero turn-away rate.",
     year: "2024",
-    image: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/pictures/auto_land.png",
   },
   {
     id: "scholarship-awards",
@@ -77,7 +77,7 @@ export const IMPACT_GALLERY: ImpactGalleryItem[] = [
     category: "Foundation",
     description: "Awarding 100% tuition scholarships and academic stipends to underprivileged science & engineering scholars.",
     year: "2025",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/pictures/foundation.png",
   },
   {
     id: "estate-groundbreaking",
@@ -85,7 +85,7 @@ export const IMPACT_GALLERY: ImpactGalleryItem[] = [
     category: "Real Estate",
     description: "Groundbreaking and smart infrastructure installation for 150+ contemporary eco-luxury residences.",
     year: "2026",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/pictures/real_estate.png",
   },
   {
     id: "carcare-launch",
@@ -93,7 +93,7 @@ export const IMPACT_GALLERY: ImpactGalleryItem[] = [
     category: "Technology",
     description: "Unveiling Nigeria's pioneering digital auto companion app, connecting motorists directly with verified technicians.",
     year: "2025",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/pictures/car_care_garage.png",
   },
   {
     id: "micro-grant-awards",
@@ -101,6 +101,6 @@ export const IMPACT_GALLERY: ImpactGalleryItem[] = [
     category: "Foundation",
     description: "Disbursing non-repayable capital seed grants to 75 local female entrepreneurs and auto-mechanic apprentices.",
     year: "2024",
-    image: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/pictures/learn.png",
   },
 ];

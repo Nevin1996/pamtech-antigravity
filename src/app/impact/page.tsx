@@ -33,7 +33,7 @@ export default function ImpactPage() {
     <div className="space-y-24">
       {/* 1. CINEMATIC VIDEO BACKGROUND HERO */}
       <VideoBackground
-        posterSrc="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1920&auto=format&fit=crop"
+        posterSrc="/assets/pictures/foundation.png"
         overlayOpacity="bg-[#101828]/85"
       >
         <div className="text-center space-y-6 max-w-4xl mx-auto">

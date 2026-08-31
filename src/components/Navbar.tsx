@@ -45,18 +45,13 @@ export default function Navbar({ onOpenInquiry }: NavbarProps) {
       <div className="mx-auto w-11/12 max-w-7xl flex items-center justify-between gap-6">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#E7000B] to-[#155DFC] p-[2px] shadow-lg shadow-red-500/20 group-hover:scale-105 transition-transform duration-300">
-            <div className="h-full w-full bg-[#101828] rounded-[10px] flex items-center justify-center font-bold text-white text-lg tracking-wider">
-              P
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <span className="font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
-              PAMTECH <span className="text-[#FF6467] font-semibold text-xs uppercase px-1.5 py-0.5 rounded bg-white/10 border border-white/10">GROUP</span>
-            </span>
-            <span className="text-[10px] text-gray-400 font-medium tracking-wider uppercase -mt-0.5">
-              Service to Humanity
-            </span>
+          <div className="flex items-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/logos/logo.svg"
+              alt="Pamtech Group Logo"
+              className="h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-300 brightness-110"
+            />
           </div>
         </Link>
 

@@ -71,8 +71,8 @@ export default function BusinessLineDetailPage({
             <span>All Business Lines</span>
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-            <div className="lg:col-span-8 space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-[#FF6467] text-xs font-bold uppercase tracking-widest">
                 <span>{biz.category}</span>
                 <span>•</span>
@@ -90,16 +90,40 @@ export default function BusinessLineDetailPage({
               <p className="text-sm sm:text-base text-gray-300 max-w-2xl leading-relaxed">
                 {biz.description}
               </p>
+
+              <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => openInquiry(biz.inquiryCategory)}
+                  className="px-6 py-4 rounded-2xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#E7000B] to-[#155DFC] hover:from-[#FB2C36] hover:to-[#51A2FF] transition-all shadow-xl shadow-red-500/25 flex items-center justify-center gap-2"
+                >
+                  <span>{biz.ctaText}</span>
+                  <Send className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
-              <button
-                onClick={() => openInquiry(biz.inquiryCategory)}
-                className="w-full py-4 rounded-2xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#E7000B] to-[#155DFC] hover:from-[#FB2C36] hover:to-[#51A2FF] transition-all shadow-xl shadow-red-500/25 flex items-center justify-center gap-2"
-              >
-                <span>{biz.ctaText}</span>
-                <Send className="w-4 h-4" />
-              </button>
+            {/* Real Subsidiary Photo Feature */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden glass-dark border border-white/20 p-2 shadow-2xl group">
+                <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden bg-black/50">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={biz.heroImage}
+                    alt={biz.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101828]/90 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white/90">
+                    <span className="font-bold flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#FF6467]" />
+                      Official Pamtech Asset
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-semibold">
+                      Verified Standard
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -213,6 +237,177 @@ export default function BusinessLineDetailPage({
           ))}
         </div>
       </section>
+
+      {/* SPECIAL SUBSIDIARY VISUAL GALLERIES */}
+      {biz.slug === "real-estate" && (
+        <section className="mx-auto w-11/12 max-w-7xl space-y-8">
+          <div className="space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#51A2FF]">
+              Masterplanned Housing Typologies
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+              Architectural Living Spaces
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "2-Bedroom Classic Apartments",
+                img: "/assets/real-estate/2-bedroom-classic-750w.webp",
+                desc: "Optimized modern layout with ensuite bedrooms, smart lighting, and balcony views.",
+              },
+              {
+                title: "2-Bedroom Luxury Flats",
+                img: "/assets/real-estate/2_bedroom_flats_1-800w.webp",
+                desc: "Contemporary open-plan living tailored for young professionals and high rental yield.",
+              },
+              {
+                title: "3-Bedroom Premium Terrace",
+                img: "/assets/real-estate/3-bedroom-premium-800w.webp",
+                desc: "Multi-level elegance with dedicated private parking, solar micro-grid, and fitted kitchen.",
+              },
+              {
+                title: "4-Bedroom Semi-Detached Duplex",
+                img: "/assets/real-estate/4-bedroom-duplex_2-800w.webp",
+                desc: "Spacious family residence featuring private lounge, maid's quarters, and private garden.",
+              },
+              {
+                title: "5-Bedroom Fully-Detached Mansion",
+                img: "/assets/real-estate/Fully-Detached-800w.webp",
+                desc: "Flagship luxury estate with smart home automation, private swimming pool, and solar backup.",
+              },
+            ].map((prop, pIdx) => (
+              <div
+                key={pIdx}
+                className="glass-dark rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-all group flex flex-col justify-between"
+              >
+                <div className="relative h-56 w-full overflow-hidden bg-black/40">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={prop.img}
+                    alt={prop.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101828] via-transparent to-transparent" />
+                </div>
+                <div className="p-6 space-y-2">
+                  <h4 className="text-lg font-bold text-white group-hover:text-[#51A2FF] transition-colors">
+                    {prop.title}
+                  </h4>
+                  <p className="text-xs text-gray-400 leading-relaxed">{prop.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {biz.slug === "technology" && (
+        <section className="mx-auto w-11/12 max-w-7xl space-y-8">
+          <div className="space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#51A2FF]">
+              Proprietary Digital Ecosystem
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+              Software Solutions Built for Africa
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Carcare Vehicle Companion",
+                img: "/assets/pictures/car_care.png",
+                tag: "B2C Mobile App",
+                desc: "Real-time auto diagnostics tracking, automated maintenance scheduling, and verified workshop network.",
+              },
+              {
+                title: "Carcare Garage SaaS",
+                img: "/assets/pictures/car_care_garage.png",
+                tag: "B2B Workshop ERP",
+                desc: "Cloud operating system empowering mechanical garages with digital job cards and inventory automation.",
+              },
+              {
+                title: "Learn with Pamtech",
+                img: "/assets/pictures/learn.png",
+                tag: "EdTech & Vocational",
+                desc: "Digital vocational skills academy training the next generation of certified automotive mechatronics engineers.",
+              },
+            ].map((prod, prIdx) => (
+              <div
+                key={prIdx}
+                className="glass-dark rounded-3xl overflow-hidden border border-white/10 hover:border-[#51A2FF]/40 transition-all group flex flex-col justify-between"
+              >
+                <div className="relative h-56 w-full overflow-hidden bg-black/40 p-4 flex items-center justify-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={prod.img}
+                    alt={prod.title}
+                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span className="absolute top-3 right-3 text-[10px] font-bold px-2.5 py-1 rounded-full bg-blue-500/20 text-[#51A2FF] border border-blue-500/30">
+                    {prod.tag}
+                  </span>
+                </div>
+                <div className="p-6 space-y-2 border-t border-white/10">
+                  <h4 className="text-lg font-bold text-white group-hover:text-[#51A2FF] transition-colors">
+                    {prod.title}
+                  </h4>
+                  <p className="text-xs text-gray-400 leading-relaxed">{prod.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {biz.slug === "foundation" && (
+        <section className="mx-auto w-11/12 max-w-7xl space-y-8">
+          <div className="space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#FF6467]">
+              Community Outreach Gallery
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+              Real Lives, Compounding Impact
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="glass-dark rounded-3xl overflow-hidden border border-white/10 p-2 shadow-2xl">
+              <div className="relative h-72 w-full rounded-2xl overflow-hidden bg-black/40">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/pictures/foundation-gallery.png"
+                  alt="Pamtech Foundation Outreach"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#101828] via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="font-bold text-white text-sm">DAD4Adolescents Mentorship</p>
+                  <p className="text-xs text-gray-300">Empowering 5,000+ secondary school students across South-East Nigeria.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="glass-dark rounded-3xl overflow-hidden border border-white/10 p-2 shadow-2xl">
+              <div className="relative h-72 w-full rounded-2xl overflow-hidden bg-black/40">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/pictures/foundation.png"
+                  alt="Pamtech Foundation Scholars"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#101828] via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="font-bold text-white text-sm">Scholarships & Micro-Grants</p>
+                  <p className="text-xs text-gray-300">1,000+ educational scholarships and ₦50M+ in enterprise grants.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 5. DIRECT CONVERSION CTA FOOTER */}
       <section className="mx-auto w-11/12 max-w-7xl pb-16">
