@@ -57,9 +57,14 @@ export default function BusinessLineDetailPage({
   return (
     <div className="space-y-24">
       {/* 1. SUBSIDIARY HERO BANNER */}
-      <section className="relative py-16 sm:py-24 hero-gradient overflow-hidden">
-        {/* Ambient Glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative py-16 sm:py-24 overflow-hidden">
+        {/* Background Visuals */}
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
+          <div className="block md:hidden absolute inset-0 w-full h-full bg-pamtech-mobile opacity-40 scale-105" />
+          <div className="hidden md:block absolute inset-0 w-full h-full bg-pamtech-desktop opacity-30 scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#101828]/70 via-[#101828]/85 to-[#101828]" />
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-red-600/15 rounded-full blur-3xl" />
+        </div>
 
         <div className="mx-auto w-11/12 max-w-7xl relative z-10 space-y-6">
           {/* Breadcrumb Back */}

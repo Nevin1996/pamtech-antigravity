@@ -47,7 +47,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${plusJakarta.variable} dark`}>
-      <body className="bg-[#101828] text-[#F3F4F6] antialiased selection:bg-[#E7000B] selection:text-white">
+      <body className="bg-[#101828] text-[#F3F4F6] antialiased selection:bg-[#E7000B] selection:text-white relative min-h-screen">
+        {/* Responsive Brand Background Layer */}
+        <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+          {/* Mobile Background */}
+          <div className="block md:hidden absolute inset-0 w-full h-full bg-pamtech-mobile opacity-30" />
+          {/* Desktop Background */}
+          <div className="hidden md:block absolute inset-0 w-full h-full bg-pamtech-desktop opacity-25" />
+          {/* Ambient Vignette & Gradient Mesh */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#101828]/50 via-transparent to-[#101828]/90" />
+        </div>
         <SmoothScroll>
           <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
         </SmoothScroll>

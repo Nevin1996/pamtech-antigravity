@@ -79,6 +79,21 @@ body {
   background: linear-gradient(135deg, #101828 0%, #460809 45%, #162456 100%);
 }
 
+/* Responsive Brand Background Utilities */
+.bg-pamtech-desktop {
+  background-image: url('/assets/backgrounds/bg-desktop.svg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.bg-pamtech-mobile {
+  background-image: url('/assets/backgrounds/bg-mobile.svg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
 .hero-overlay {
   background: radial-gradient(circle at 50% 30%, rgba(231, 0, 11, 0.15) 0%, rgba(16, 24, 40, 0.95) 75%);
 }
@@ -88,3 +103,4 @@ body {
   position: relative;
   min-height: 100vh;
 }
+

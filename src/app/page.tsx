@@ -42,10 +42,19 @@ export default function HomePage() {
   return (
     <div className="space-y-24 sm:space-y-32">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden hero-gradient pt-8 pb-16">
-        {/* Ambient Glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-red-600/15 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none" />
+      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-8 pb-16">
+        {/* Background Visuals: Mobile and Desktop */}
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
+          {/* Mobile Hero Background */}
+          <div className="block md:hidden absolute inset-0 w-full h-full bg-pamtech-mobile opacity-45 scale-105" />
+          {/* Desktop Hero Background */}
+          <div className="hidden md:block absolute inset-0 w-full h-full bg-pamtech-desktop opacity-40 scale-105" />
+          
+          {/* Gradient Overlay & Ambient Glows */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#101828]/60 via-[#101828]/70 to-[#101828]" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-red-600/15 rounded-full blur-[140px]" />
+          <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-blue-600/15 rounded-full blur-[120px]" />
+        </div>
 
         <div className="mx-auto w-11/12 max-w-7xl relative z-10 text-center space-y-8">
           {/* Milestone Badge */}

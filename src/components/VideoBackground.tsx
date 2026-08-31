@@ -53,12 +53,17 @@ export default function VideoBackground({
             className="w-full h-full object-cover scale-105 transform motion-safe:animate-float-slow"
           />
         ) : (
-          /* High-Impact Ambient Motion Gradient Simulation */
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${posterSrc})` }}
-          >
-            <div className="w-full h-full bg-gradient-to-br from-[#101828] via-[#460809]/80 to-[#162456]/90 mix-blend-multiply" />
+          /* High-Impact Ambient Motion & Responsive SVG Pattern */
+          <div className="w-full h-full relative">
+            <div className="block md:hidden absolute inset-0 w-full h-full bg-pamtech-mobile opacity-45 scale-105" />
+            <div className="hidden md:block absolute inset-0 w-full h-full bg-pamtech-desktop opacity-40 scale-105" />
+            {posterSrc && (
+              <div
+                className="w-full h-full bg-cover bg-center opacity-70 mix-blend-overlay"
+                style={{ backgroundImage: `url(${posterSrc})` }}
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#101828]/80 via-[#460809]/60 to-[#162456]/80 mix-blend-multiply" />
           </div>
         )}
 
